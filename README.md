@@ -1,8 +1,10 @@
 # Omniauth::Medium
+[![Gem Version](https://badge.fury.io/rb/omniauth-medium.svg)](https://badge.fury.io/rb/omniauth-medium)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omniauth/medium`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is an unofficial OmniAuth strategy for authenticating through Medium.
 
-TODO: Delete this and the text above, and describe your gem
+To use it, you'll need to [register a new OAuth application](https://medium.com/me/applications/new) with Medium.
+
 
 ## Installation
 
@@ -25,6 +27,30 @@ Or install it yourself as:
     use OmniAuth::Builder do
       provider :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET']
     end
+
+## Example Omniauth Hash
+```
+{
+  "provider"=>"medium",
+  "uid"=>"1ec92d6f7dc96f3c95dfa0100d0bf03f36d2fe6b27a15b5c3061609866650d484",
+  "info"=>{
+    "id"=>"1ec92d6f7dc96f3c95dfa0100d0bf03f36d2fe6b27a15b5c3061609866650d484",
+    "username"=>"adamkirkwood",
+    "name"=>"Adam Kirkwood",
+    "url"=>"https://medium.com/@adamkirkwood",
+    "imageUrl"=>"https://cdn-images-1.medium.com/fit/c/200/200/0*lBXH3ieYv40OwIlo.jpeg"
+  },
+  "credentials"=>{
+    "token"=>"...",
+    "refresh_token"=>"...",
+    "expires_at"=>...,
+    "expires"=>true
+  },
+  "extra"=>{
+
+  }
+}
+```
 
 ## Development
 
