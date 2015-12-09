@@ -20,9 +20,11 @@ Or install it yourself as:
 
     $ gem install omniauth-medium
 
-## Usage
+## Basic Usage
 
-TODO: Write usage instructions here
+    use OmniAuth::Builder do
+      provider :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET']
+    end
 
 ## Development
 
@@ -32,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/omniauth-medium/fork )
+1. Fork it ( https://github.com/adamkirkwood/omniauth-medium/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
