@@ -7,5 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-/.env
 /*.gem
+examples/sinatra/.env

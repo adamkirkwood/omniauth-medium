@@ -1,5 +1,5 @@
-# Omniauth::Medium
-[![Gem Version](https://badge.fury.io/rb/omniauth-medium.svg)](https://badge.fury.io/rb/omniauth-medium)
+# omniauth-medium
+[![Gem Version](https://badge.fury.io/rb/omniauth-medium.svg)](https://badge.fury.io/rb/omniauth-medium) [![Build Status](https://travis-ci.org/adamkirkwood/omniauth-medium.svg)](https://travis-ci.org/adamkirkwood/omniauth-medium) [![Dependency Status](https://gemnasium.com/adamkirkwood/omniauth-medium.svg)](https://gemnasium.com/adamkirkwood/omniauth-medium)
 
 This is an unofficial OmniAuth strategy for authenticating through Medium.
 
@@ -24,11 +24,25 @@ Or install it yourself as:
 
 ## Basic Usage
 
+### For Rack-based applications
+
     use OmniAuth::Builder do
-      provider :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET']
+      provider :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications'
     end
 
-## Example Omniauth Hash
+### In Rails, you'll want to add to the middleware stack:
+	Rails.application.config.middleware.use OmniAuth::Builder do
+	  provider : medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications'
+	end
+	
+See the [example Sinatra app](https://github.com/adamkirkwood/omniauth-medium/tree/master/examples/sinatra) for a full example.
+
+For more information on interfacing with Medium's API, head over to their [documentation](https://github.com/Medium/medium-api-docs).
+	
+
+## Auth Hash Schema
+OmniAuth will return an authentication hash similar to the example below. Learn more about the [Auth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema).
+
 ```
 {
   "provider"=>"medium",
