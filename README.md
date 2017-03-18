@@ -24,21 +24,31 @@ Or install it yourself as:
 
 ## Basic Usage
 
-### For Rack-based applications
+For Rack-based applications
+```ruby
+use OmniAuth::Builder do
+  provider :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications'
+end
+```
 
-    use OmniAuth::Builder do
-      provider :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications'
-    end
+In Rails, you'll want to add to the middleware stack:
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider : medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications'
+end
+```
 
-### In Rails, you'll want to add to the middleware stack:
-	Rails.application.config.middleware.use OmniAuth::Builder do
-	  provider : medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications'
-	end
-	
+Or with Devise to your `config/initializers/devise.rb`
+
+```ruby
+config.omniauth :medium, ENV['MEDIUM_CLIENT_ID'], ENV['MEDIUM_CLIENT_SECRET'], scope: 'basicProfile,listPublications', callback_url: 'http://example.com/users/auth/medium/callback'
+```
+**Starting from version 1.4 in omniauth-oauth2 you must provide same callback url you have provided on API dashboard otherwise authentication won't work.**
+
 See the [example Sinatra app](https://github.com/adamkirkwood/omniauth-medium/tree/master/examples/sinatra) for a full example.
 
 For more information on interfacing with Medium's API, head over to their [documentation](https://github.com/Medium/medium-api-docs).
-	
+
 
 ## Auth Hash Schema
 OmniAuth will return an authentication hash similar to the example below. Learn more about the [Auth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema).
