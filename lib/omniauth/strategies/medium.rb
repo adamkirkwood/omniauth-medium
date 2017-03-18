@@ -5,7 +5,7 @@ module OmniAuth
     # Oauth2 strategy for medium.com
     class Medium < OmniAuth::Strategies::OAuth2
       option :name, 'medium'
-      option :scope, 'basicProfile,listPublications'
+      option :scope, 'basicProfile,publishPost'
 
       option :client_options,
              site: 'https://api.medium.com/v1',
